@@ -1,0 +1,231 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="signInModal">
+    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabell">Вход здесь!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--                    <form th:action="@{/login}" method="post" id="form1">-->
+                    <form th:action="@{/perform_login}" th:method="POST" id="form1">
+                        <div class="form-group input-group-sm">
+                            <label for="username">Login</label>
+                            <input type="text" name="username" id="username" class="form-control input"
+                                   placeholder="Введите учетное имя"
+                                   required autofocus>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control bbq_license"
+                                   placeholder="Введите пароль"
+                                   required>
+                            <input class="bbq_license_toggle input" type="checkbox"> <span>Показать пароль</span>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-secondary btn-sm col-md-5" type="submit" form="form1">Войти</button>
+<!--                    <button class="btn btn-secondary btn-sm col-md-5" onclick="submitForm()" form="form1">вход</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="regModal">
+    <div class="modal fade" id="regUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="examplModalLabel">Регистрация!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formRegUserModal">
+                        <div class="form-group input-group-sm">
+                            <label for="inputLogin">Login</label>
+                            <input type="text" name="login" id="inputLogin" class="form-control input"
+                                   placeholder="Введите учетное имя" required autofocus>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control bbq_license input"
+                                   placeholder="Введите пароль" required>
+                            <input class="bbq_license_toggle" type="checkbox"> <span>Показать пароль</span>
+
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" name="email" id="inputEmail" class="form-control input"
+                                   placeholder="Введите email" required>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="inputName">Name</label>
+                            <input type="text" name="name" id="inputName" class="form-control input" placeholder="Введите имя"
+                                   required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-secondary btn-sm col-md-5" onclick="addUser()">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="updateUserModal">
+    <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelll">Редактирование!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formUpdateUserModal">
+                            <input type="hidden" name="id" id="inputIdUpdate" class="input">
+                        <div class="form-group input-group-sm">
+                            <label for="inputLoginUpdate">Login</label>
+                            <input type="text" name="login" id="inputLoginUpdate" class="form-control input"
+                                   placeholder="Введите учетное имя" required autofocus>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="inputPasswordUpdate">Password</label>
+                            <input type="password" name="password" id="inputPasswordUpdate"
+                                   class="form-control bbq_license input" placeholder="Введите пароль" required>
+
+                            <input class="bbq_license_toggle" type="checkbox"> <span>Показать пароль</span>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="inputEmailUpdate">Email</label>
+                            <input type="email" name="email" id="inputEmailUpdate" class="form-control input"
+                                   placeholder="Введите email" required>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="inputNameUpdate">Name</label>
+                            <input type="text" name="name" id="inputNameUpdate" class="form-control input"
+                                   placeholder="Введите имя" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-secondary btn-sm col-md-5" onclick="updateUser()">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="addDishModal">
+    <div class="modal fade" id="addDishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Добавь блюдо!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAddDishModal">
+                        <input type="hidden" name="restaurantId" id="restaurantId" class="input">
+                        <div class="form-group input-group-sm">
+                            <label for="dishName">Name</label>
+                            <input type="text" name="name" id="dishName" class="form-control input"
+                                   placeholder="Введите название" required autofocus>
+                        </div>
+                        <div class="form-group input-group-sm">
+                            <label for="dishPrice">Price</label>
+                            <input type="number" name="price" id="dishPrice" class="form-control input"
+                                   placeholder="Введите цену" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-secondary btn-sm col-md-5"
+                            onclick="addDish($('#restaurantId').val())">Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="addRestaurantModal">
+    <div class="modal fade" id="addRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="examplleModalLabel">Добавь ресторан!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAddRestaurantModal">
+                        <div class="form-group input-group-sm">
+                            <label for="restaurantName">Name</label>
+                            <input type="text" name="name" id="restaurantName" class="form-control input"
+                                   placeholder="Введите название" required autofocus>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-secondary btn-sm col-md-5" onclick="addRestaurants()">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="updateRestaurantModal">
+    <div class="modal fade" id="updateRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="examplleModalLabelll">Добавь ресторан!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formUpdateRestaurantModal">
+                        <input type="hidden" name="id" class="input">
+
+                        <div class="form-group input-group-sm">
+                            <label for="restaurantNameUpdate">Name</label>
+                            <input type="text" name="name" id="restaurantNameUpdate" class="form-control input"
+                                   placeholder="Введите название" required autofocus>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-secondary btn-sm col-md-5" onclick="updateRestaurant()">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

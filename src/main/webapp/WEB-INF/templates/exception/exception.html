@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/head.html::head"></head>
+
+<body class="bg-light">
+<header th:replace="fragments/header.html::navBar"></header>
+
+Привет Я ошибка!!!
+<H2 th:text="${typeMessage}"></H2>
+<h3 th:text="${typeMessage}"></h3>
+<h3 th:text="${message}"></h3>
+
+</body>
+</html>
