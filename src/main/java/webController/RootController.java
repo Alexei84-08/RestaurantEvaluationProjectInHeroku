@@ -53,12 +53,12 @@ public class RootController {
         return "login";
     }
 
-    @GetMapping("registration")
+    @GetMapping("/registration")
     public String registeration(){
         return "registration";
     }
 
-    @PostMapping("registration")
+    @PostMapping("/registration")
     public String registerationUser(@Valid @ModelAttribute UserTo userTo){
         LOG.info("registerationUser userTo ={}", userTo);
         userService.save(userTo);

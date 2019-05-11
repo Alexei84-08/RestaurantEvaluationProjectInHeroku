@@ -30,13 +30,6 @@ public class UserController {
         this.voteService = voteService;
     }
 
-//    @GetMapping(value = "/votes", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<List<VoteTO>> getUserVoteHistory() {
-//        LOG.info("getUserVoteHistory user id = {}", AuthorizedUser.id());
-//
-//        return ResponseEntity.ok(voteService.createVoteTOList(AuthorizedUser.get().getUser()));
-//    }
-
     @GetMapping(value = "/votes", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<VoteTO>> getUserVoteHistory() {
         LOG.info("getUserVoteHistory user id = {}", AuthorizedUser.id());
