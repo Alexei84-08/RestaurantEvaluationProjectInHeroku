@@ -1,5 +1,5 @@
 # RestaurantEvaluationProject
-##[TopJava](http://javawebinar.ru/topjava/) graduation project  
+## [TopJava](http://javawebinar.ru/topjava/) graduation project  
 Разработка и реализация REST API с использованием Hibernate / Spring / Spring-MVC.
 -----------------------------
 
