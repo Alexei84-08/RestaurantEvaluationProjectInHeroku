@@ -48,7 +48,7 @@ Maven, H2 database, Spring Security, Spring MVC, Spring Data JPA, Hibernate, SLF
 + Сборка проекта с использованием Maven:
   * Скачать прект
   * Распаковать прект в любую папку
-  * Открыть данную папку в командной строке
+  * Открыть папку с проектом в командной строке
   * В командной строке выполнить команду mvn package
   * В командной строке выполнить команду java -jar target/dependency/webapp-runner.jar target/*.war
 
