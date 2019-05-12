@@ -72,5 +72,4 @@ INSERT INTO votes (id, user_id, restaurant_id, date, time) VALUES
 ('143', '104', '108', CURRENT_DATE, '08:50:00'),
 ('144', '104', '109', CURRENT_DATE, '10:55:00'),
 ('145', '104', '109', DATEADD('DAY', -1, CURRENT_DATE), '07:10:00'),
-('146', '100', '105', CURRENT_DATE, '10:15:00'),
-('147', '2', '107', CURRENT_DATE, '10:25:00');
+('146', '100', '105', CURRENT_DATE, '10:15:00');

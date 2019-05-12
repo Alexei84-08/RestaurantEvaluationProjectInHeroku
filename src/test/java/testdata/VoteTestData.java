@@ -35,11 +35,9 @@ public class VoteTestData {
     public static Vote VOTE144 = new Vote(144, USER_JANE_DOE, MUMU, LocalDateTime.of(LocalDate.now(), LocalTime.of(10, 55)));
     public static Vote VOTE145 = new Vote(145, USER_JANE_DOE, MUMU, LocalDateTime.of(LocalDate.now().minus(Period.ofDays(1)), LocalTime.of(7, 10)));
     public static Vote VOTE146 = new Vote(146, USER_ADMIN_N, STARDOGS, LocalDateTime.of(LocalDate.now(), LocalTime.of(10, 15)));
-    public static Vote VOTE147 = new Vote(147, USER_USER_R, JAR_PIZZA, LocalDateTime.of(LocalDate.now(), LocalTime.of(10, 25)));
-
 
     public static List<Vote> VOTES_TODAY = asList(VOTE130, VOTE131, VOTE134, VOTE135, VOTE136, VOTE137, VOTE139,
-            VOTE140, VOTE142, VOTE143, VOTE144, VOTE146, VOTE147);
+            VOTE140, VOTE142, VOTE143, VOTE144, VOTE146);
     public static List<VoteTO> VOTES_TO_USER_USER = asList(new VoteTO(VOTE133), new VoteTO(VOTE132), new VoteTO(VOTE131), new VoteTO(VOTE130));
 
     public static int NO_VOTE = 15;
