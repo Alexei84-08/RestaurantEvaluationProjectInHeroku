@@ -10,58 +10,57 @@
 
         <tx:annotation-driven/>
 
-<!--        <context:property-placeholder location="classpath:dbH2/heroku.properties"/>-->
-    <context:property-placeholder location="classpath:/dbH2/heroku.properties" system-properties-mode="OVERRIDE"/>
+<!--    <context:property-placeholder location="classpath:/dbH2/heroku.properties" system-properties-mode="OVERRIDE"/>-->
+<!--    -->
+<!--        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"-->
+<!--              p:driverClassName= "${datasource.driverClassName}"-->
+<!--              p:url="${database.url}"-->
+<!--              p:username="${database.username}"-->
+<!--              p:password="${database.password}"-->
+<!--        />-->
+
+<!--        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"-->
+<!--              p:dataSource-ref="dataSource"-->
+<!--              p:packagesToScan="model">-->
+
+<!--            <property name="jpaPropertyMap">-->
+<!--                <map>-->
+<!--                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>-->
+<!--                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"-->
+<!--                           value="${hibernate.use_sql_comments}"/>-->
+<!--                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}"-->
+<!--                           value="update"/>-->
+<!--                </map>-->
+<!--            </property>-->
+
+<!--            <property name="jpaVendorAdapter">-->
+<!--                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"-->
+<!--                      p:showSql="${jpa.showSql}">-->
+<!--                </bean>-->
+<!--            </property>-->
+<!--        </bean>-->
+
+<!--        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"-->
+<!--              p:entityManagerFactory-ref="entityManagerFactory"/>-->
 
 
-    <!--&lt;!&ndash;    <jdbc:initialize-database data-source="h2dataSource" enabled="${database.populate}">&ndash;&gt;-->
-    <!--&lt;!&ndash;        <jdbc:script location="${jdbc.initLocation}"/>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <jdbc:script encoding="utf-8" location="${jdbc.populateLocation}"/>&ndash;&gt;-->
-    <!--&lt;!&ndash;    </jdbc:initialize-database>&ndash;&gt;-->
 
-        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-              p:driverClassName= "${datasource.driverClassName}"
-              p:url="${database.url}"
-              p:username="${database.username}"
-              p:password="${database.password}"
-        />
 
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-              p:dataSource-ref="dataSource"
-              p:packagesToScan="model">
+        <context:property-placeholder location="classpath:/dbH2/heroku.properties" system-properties-mode="OVERRIDE"/>
 
-            <property name="jpaPropertyMap">
-                <map>
-                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>
-                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
-                           value="${hibernate.use_sql_comments}"/>
-                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}"
-                           value="update"/>
-                </map>
-            </property>
-
-            <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-                      p:showSql="${jpa.showSql}">
-                </bean>
-            </property>
+        <bean class="java.net.URI" id="dbUrl">
+            <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
         </bean>
 
-        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-              p:entityManagerFactory-ref="entityManagerFactory"/>
+        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+            <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+            <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+        </bean>
 
-<!--        <context:property-placeholder location="classpath:/dbH2/heroku.properties" system-properties-mode="OVERRIDE"/>-->
 
 
-    <!--    <bean class="java.net.URI" id="dbUrl">-->
-    <!--        <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>-->
-    <!--    </bean>-->
 
-    <!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
-    <!--        <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>-->
-    <!--        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>-->
-    <!--        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>-->
-    <!--    </bean>-->
 
         <context:component-scan base-package="repository"/>
         <jpa:repositories base-package="repository"/>
