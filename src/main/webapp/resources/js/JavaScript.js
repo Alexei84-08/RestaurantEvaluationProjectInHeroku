@@ -554,16 +554,6 @@ function successNoty(text) {
     }).show();
 }
 
-// function failNoty(jqXHR) {
-//     closeNoty();
-//     // const errorInfo = JSON.parse(jqXHR.responseText);
-//     failedNote = new Noty({
-//         text: jqXHR.statusText + ' Код-' + jqXHR.status+ ' Код-' + jqXHR.responseText,
-//         type: "error",
-//         layout: "topRight"
-//     }).show();
-// }
-
 function failNoty(jqXHR) {
     closeNoty();
     // https://stackoverflow.com/questions/48229776

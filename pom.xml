@@ -184,25 +184,12 @@
             <scope>runtime</scope>
         </dependency>
 
-
-
         <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
-
-
-
-
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/postgresql/postgresql &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--            <version>9.1-901-1.jdbc4</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.postgresql</groupId>
