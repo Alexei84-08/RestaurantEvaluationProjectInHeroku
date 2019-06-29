@@ -1,11 +1,17 @@
 package webController;
 
+import org.apache.commons.dbcp.managed.ManagedConnection;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.EncodedResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +19,16 @@ import service.*;
 import to.DayEstimate;
 import to.UserTo;
 
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 @Controller
@@ -64,4 +79,16 @@ public class RootController {
         userService.save(userTo);
         return "redirect:/";
     }
-}
+
+    @GetMapping("/dbupdate")
+    public void runSqlFile() throws SQLException {
+        private final JdbcTemplate jdbcTemplate;
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://ec2-79-125-4-72.eu-west-1.compute.amazonaws.com:5432/dd72b35hi5r0ri?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory", "dxmfjzxurhfgsf", "3eca5fbc00b068b33e59617e6b1c28747182471ed9576601b1a1266091ae0b53");
+
+//        Connection dataSource = DriverManager.getConnection("dbH2/heroku.properties");
+
+
+        Resource resource = new ClassPathResource("dbH2/populateDB.sql")
+        EncodedResource encodedResource = new EncodedResource(resource, Charset.forName("UTF-8"));
+        ScriptUtils.executeSqlScript(connection, encodedResource);
+    }}
