@@ -1,0 +1,23 @@
+Index: src/main/resources/spring/spring-db.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/spring/spring-db.xml	(revision 4cc975b87724a6ac613fc1d7f2416a004a27dfb6)
++++ src/main/resources/spring/spring-db.xml	(date 1561794395000)
+@@ -4,10 +4,15 @@
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
++       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+ 
+     <tx:annotation-driven/>
+ 
++    <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
++        <jdbc:script encoding="utf-8" location="classpath:dbH2/populateDB.sql"/>
++    </jdbc:initialize-database>
++
+     <context:property-placeholder location="classpath:/dbH2/heroku.properties" system-properties-mode="OVERRIDE"/>
+ 
+     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
